@@ -4,16 +4,41 @@ $( window ).ready( function() {
   var vid = document.getElementById("vid");
   var vidEnd = vid.duration;    // Returns the ending time (in seconds)
   var sliderRange = $('.ui-slider-range');
-  var currentPercent = (vid.currentTime / vidEnd) * 100;
+  // var currentTime = vid.currentTime;
+  var remainingTime = (vidEnd.toFixed(0) - vid.currentTime.toFixed(0));
+  var currentPercent = ((vid.currentTime / vidEnd) * 100).toFixed(0);
+  var remainingPercent =  (100 - currentPercent).toFixed(0);
   var vidWidth = vid.width;
-  var onePercentWidth = vidWidth / 100;
+  // var onePercentWidth = vidWidth / 100;
   var sliderHandle = $('.ui-slider-handle');
   var sliderRangeMax = $( '#slider-range-max');
   var trackProgressTime = 70;
   var progressInterval = setInterval(function(){ updateProgress() }, trackProgressTime);
   var paused = false;
 
-  console.log('onePercentWidth = ' + onePercentWidth);
+
+  // console.log('onePercentWidth = ' + onePercentWidth);
+  console.log(vidEnd.toFixed(0) - vid.currentTime.toFixed(0));
+  // Check to see if calculations are made for the stats before the code runs (avoid throwing up 'NaN' errors);
+  var remainingTimeValue = isNaN(remainingTime);
+  var currentPercentValue = isNaN(currentPercent);
+  var remainingPercentValue = isNaN(remainingPercent);
+
+  var solveCalculations = setInterval(function(){ solvingCalulations() }, 100);
+
+  function solvingCalulations() {
+    console.log('testing')
+    console.log('remainingTimeValue = ' + remainingTimeValue);
+    console.log('currentPercentValue = ' + currentPercentValue);
+    console.log('remainingPercentValue = ' + remainingPercentValue);
+    if (remainingTimeValue == false && currentPercentValue == false && remainingPercentValue == false) {
+      console.log('NaN is no longer a problem... play video')
+      vid.play();
+      clearInterval(solveCalculations);    
+    }
+  };
+
+
 
   $( function() {
     var inc = 10;
@@ -28,13 +53,14 @@ $( window ).ready( function() {
 
         $( "#box" ).val( ui.value * inc);
           console.log(ui.value / inc);
-          vid.currentTime = ui.value / inc;
+          vid.currentTime = ui.value / inc.toFixed(0);
 
-    var currentPercent = (vid.currentTime / vidEnd) * 100;
-          $( "#currentTimeBox" ).text( 'Current Time = ' + vid.currentTime.toFixed(0) + ' seconds' );
-          $( "#timeLeftBox" ).text( 'Time Remaining = ' + (vidEnd.toFixed(0) - vid.currentTime.toFixed(0)) + ' seconds' );
-          $( "#currentPercentBox" ).text( 'Percent Complete = ' + currentPercent.toFixed(0) + ' %' );
-          $( "#percentLeftBox" ).text( 'Percent Remaining = ' + (100 - currentPercent.toFixed(0)) + ' %' );
+          var currentPercent = ((vid.currentTime / vidEnd) * 100).toFixed(0);
+          $( "#currentTimeBox" ).text( 'Current Time = ' + vid.currentTime + ' seconds' );
+          $( "#timeLeftBox" ).text( 'Time Remaining = ' + remainingTime + ' seconds' );
+          $( "#currentPercentBox" ).text( 'Percent Complete = ' + currentPercent + ' %' );
+          $( "#percentLeftBox" ).text( 'Percent Remaining = ' + remainingPercent + ' %' );
+
       },          
     });
   });
@@ -55,15 +81,15 @@ $( window ).ready( function() {
   }
 
   function updateProgress() {
-    var currentTime = vid.currentTime;
+    var currentTime = vid.currentTime.toFixed(0);
     var currentPercent = (vid.currentTime / vidEnd) * 100;
     console.log('currentTime = ' + currentTime.toFixed(2) );
-    console.log('currentPercent = ' + currentPercent.toFixed(10) );
+    console.log('currentPercent = ' + currentPercent );
 
-    $( "#currentTimeBox" ).text( 'Current Time = ' + vid.currentTime.toFixed(0) + ' seconds' );
-    $( "#timeLeftBox" ).text( 'Time Remaining = ' + (vidEnd.toFixed(0) - vid.currentTime.toFixed(0)) + ' seconds' );
-    $( "#currentPercentBox" ).text( 'Percent Complete = ' + currentPercent.toFixed(0) + ' %' );
-    $( "#percentLeftBox" ).text( 'Percent Remaining = ' + (100 - currentPercent.toFixed(0)) + ' %' );
+          $( "#currentTimeBox" ).text( 'Current Time = ' + currentTime + ' seconds' );
+          $( "#timeLeftBox" ).text( 'Time Remaining = ' + remainingTime + ' seconds' );
+          $( "#currentPercentBox" ).text( 'Percent Complete = ' + currentPercent + ' %' );
+          $( "#percentLeftBox" ).text( 'Percent Remaining = ' + remainingPercent + ' %' );
 
     $( '.ui-slider-handle' ).css({left: currentPercent + '%', position:'absolute'});
     $( '.ui-slider-range' ).css({right: 0 + '%', width:100-currentPercent + '%', position:'absolute'});
