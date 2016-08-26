@@ -1,0 +1,103 @@
+   #container {
+  position: absolute;
+  top:50%;
+  left:50%;
+  width:800px;
+  height:400px;
+  transform:translate(-50%, -50%);
+  overflow: visible;
+}
+
+#vid {
+  position: absolute;
+  width:100%;
+  height:100%;
+}
+
+#slider-range-max {
+  position: absolute;
+  width: 80%;
+  left:10%;
+  height:2%;
+  bottom: -10%;
+}
+
+#counterContainer {
+  position: absolute;
+  bottom:-35%;
+  left:10%; 
+  width:600px;
+  height:100px;
+}
+
+#currentTimeBox {
+  display: inline;
+  position: absolute;
+  top:0;
+  left:0;
+  margin-bottom:10px;
+}
+
+#timeLeftBox {
+  display: inline;
+  position: absolute;
+  top:0;
+  left:50%;
+  margin-bottom:10px;
+}
+
+#currentPercentBox {
+  display: inline-block;
+  float: left;
+  top: 30px;
+  left: 0;
+  margin-bottom: 10px;
+}
+
+#percentLeftBox {
+  display: inline-block;
+  float: left;
+  top: 30px;
+  left: 50%;
+  margin-bottom: 10px;
+}
+
+p {
+  position: absolute;
+  top:0px;
+  left:0px;
+  font-size: 20px;
+  font-weight:bold;
+  font-family: sans-serif;
+  color:black;
+}
+
+.ui-slider-handle {
+  border-radius:50%;
+  top:50%;
+/*   transform:translate(0%, 0%); */
+}
+
+button {
+  position: absolute;
+  top:90px;
+  margin-bottom:10px;
+  padding:10px;
+  background-color:light-gray;
+}
+
+#replayBtn {
+  position:absolute;
+  display:none;
+  opacity:0;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  font-size:40px;
+  font-weight:bold;
+  font-family:sans-serif;
+  color:white;
+  letter-spacing:0.05em;
+  cursor:pointer;
+}
+

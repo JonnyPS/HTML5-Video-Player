@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <style>
+    </style>
+    <link type="text/css" href="css/app.css" rel="stylesheet" />
+    <link type="text/css" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
+  </head>
+    <body>
+      <div id="container">
+        <video id="vid" width="800" height="400" autoplay>
+          <source src="http://s611325350.websitehome.co.uk/inProgress/temp/TimeLapseMovie.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div id="replayBtn">REPLAY</div>
+        <div id="slider-range-max"></div>
+        <div id="counterContainer">
+          <p id="currentTimeBox"></p>
+          <p id="timeLeftBox"></p>
+          <p id="currentPercentBox"></p>    
+          <p id="percentLeftBox"></p>    
+          <button id="playPauseBtn">Pause</button>
+        </div>    
+      </div>
+
+
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+    <script src="js/videoControl.js"></script>
+
+
+  </body>
+</html>
