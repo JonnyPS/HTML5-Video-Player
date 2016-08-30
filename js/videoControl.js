@@ -38,6 +38,7 @@ $( window ).ready( function() {
       } else {
         console.log('re-initialising');
         init();
+        clearInterval(solveCalculations);    
       }
     };
 
