@@ -24,7 +24,7 @@ $( window ).ready( function() {
         currentPercentValue = isNaN(currentPercent);
         remainingPercentValue = isNaN(remainingPercent);
 
-        solveCalculations = setInterval(function(){ solvingCalulations() }, 50);
+        solveCalculations = setInterval(function(){ solvingCalulations() }, 1000);
 
     function solvingCalulations() {
       console.log('testing')
