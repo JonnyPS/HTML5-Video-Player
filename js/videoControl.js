@@ -37,8 +37,8 @@ $( window ).ready( function() {
         clearInterval(solveCalculations);    
       } else {
         console.log('re-initialising');
-        init();
         clearInterval(solveCalculations);    
+        init();
       }
     };
 
