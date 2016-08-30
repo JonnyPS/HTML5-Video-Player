@@ -2,6 +2,7 @@
 $( window ).ready( function() {
   function init() {
     console.log('controlVid');
+    console.log('init');
     var vid = document.getElementById("vid");
         vidEnd = vid.duration;    // Returns the ending time (in seconds)
         sliderRange = $('.ui-slider-range');
@@ -35,7 +36,7 @@ $( window ).ready( function() {
         vid.play();
         clearInterval(solveCalculations);    
       } else {
-        console.log('re-initiasing');
+        console.log('re-initialising');
         init();
       }
     };
