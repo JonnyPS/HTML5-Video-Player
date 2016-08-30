@@ -4,7 +4,7 @@ $( window ).ready( function() {
   var vid = document.getElementById("vid");
   var vidEnd = vid.duration;    // Returns the ending time (in seconds)
   var sliderRange = $('.ui-slider-range');
-  // var currentTime = vid.currentTime;
+  var currentTime = vid.currentTime.toFixed(0);
   var remainingTime = (vidEnd.toFixed(0) - vid.currentTime.toFixed(0));
   var currentPercent = ((vid.currentTime / vidEnd) * 100).toFixed(0);
   var remainingPercent =  (100 - currentPercent).toFixed(0);
@@ -55,11 +55,20 @@ $( window ).ready( function() {
           console.log(ui.value / inc);
           vid.currentTime = ui.value / inc.toFixed(0);
 
+          // var currentPercent = ((vid.currentTime / vidEnd) * 100).toFixed(0);
+          var currentTime = vid.currentTime.toFixed(0);
+          var remainingTime = (vidEnd.toFixed(0) - vid.currentTime.toFixed(0));
           var currentPercent = ((vid.currentTime / vidEnd) * 100).toFixed(0);
+          var remainingPercent =  (100 - currentPercent).toFixed(0);
           $( "#currentTimeBox" ).text( 'Current Time = ' + vid.currentTime + ' seconds' );
           $( "#timeLeftBox" ).text( 'Time Remaining = ' + remainingTime + ' seconds' );
           $( "#currentPercentBox" ).text( 'Percent Complete = ' + currentPercent + ' %' );
           $( "#percentLeftBox" ).text( 'Percent Remaining = ' + remainingPercent + ' %' );
+
+          if ( currentTime != vidEnd ) {
+            console.log( 'vid has not ended' );
+            $("#replayBtn").fadeOut(250);
+          }
 
       },          
     });
@@ -76,14 +85,19 @@ $( window ).ready( function() {
     }
   } );
 
+
+
   function percentToPixel(_elem, _perc){
     return ( $('.ui-slider-range') .outerWidth()/100)* parseFloat(_perc);
   }
 
   function updateProgress() {
     var currentTime = vid.currentTime.toFixed(0);
-    var currentPercent = (vid.currentTime / vidEnd) * 100;
-    console.log('currentTime = ' + currentTime.toFixed(2) );
+    var remainingTime = (vidEnd.toFixed(0) - vid.currentTime.toFixed(0));
+    var currentPercent = ((vid.currentTime / vidEnd) * 100).toFixed(0);
+    var remainingPercent =  (100 - currentPercent).toFixed(0);
+
+    console.log('currentTime = ' + currentTime );
     console.log('currentPercent = ' + currentPercent );
 
           $( "#currentTimeBox" ).text( 'Current Time = ' + currentTime + ' seconds' );
