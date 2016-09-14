@@ -62,6 +62,7 @@ $( window ).ready( function() {
         min: 0,
         max: vidEnd * inc,
         value: 0,
+        step:1,
         slide: function( event, ui ) {
           // On the slider being on mousedown, the following happens:
           // video and animation are paused
@@ -120,7 +121,7 @@ $( window ).ready( function() {
     function updateProgress() {
       var currentTime = vid.currentTime.toFixed(0);
       var remainingTime = (vidEnd.toFixed(0) - vid.currentTime.toFixed(0));
-      var currentPercent = ((vid.currentTime / vidEnd) * 100).toFixed(0);
+      var currentPercent = ((vid.currentTime / vidEnd) * 100);
       var remainingPercent =  (100 - currentPercent).toFixed(0);
 
       console.log('currentTime = ' + currentTime );
@@ -128,10 +129,10 @@ $( window ).ready( function() {
 
       $( "#currentTimeBox" ).text( 'Current Time = ' + currentTime + ' seconds' );
       $( "#timeLeftBox" ).text( 'Time Remaining = ' + remainingTime + ' seconds' );
-      $( "#currentPercentBox" ).text( 'Percent Complete = ' + currentPercent + ' %' );
+      $( "#currentPercentBox" ).text( 'Percent Complete = ' + currentPercent.toFixed(0) + ' %' );
       $( "#percentLeftBox" ).text( 'Percent Remaining = ' + remainingPercent + ' %' );
 
-      $( '.ui-slider-handle' ).css({left: currentPercent + '%', position:'absolute'});
+      $( '.ui-slider-handle' ).css({left: currentPercent.toFixed(10) + '%', position:'absolute'});
       $( '.ui-slider-range' ).css({right: 0 + '%', width:100-currentPercent + '%', position:'absolute'});
 
       // If percentage complete reaches 100%, then clear the interval
