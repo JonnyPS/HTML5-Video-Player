@@ -62,7 +62,6 @@ $( window ).ready( function() {
         min: 0,
         max: vidEnd * inc,
         value: 0,
-        step:1,
         slide: function( event, ui ) {
           // On the slider being on mousedown, the following happens:
           // video and animation are paused
